@@ -34,7 +34,7 @@ fn main() {
         println!("{} : {}", i, fib(i))
     }
     */
-    
+
     let mut map = HashMap::new();
     for i in 1..41 {
         println!("{} : {}", i, fib_dyn(i, &mut map))
