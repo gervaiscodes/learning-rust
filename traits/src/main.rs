@@ -23,13 +23,18 @@ impl CreditCharge for BitCredit {
     }
 }
 
-fn main() {
-    let card = BitCredit { btc_number: 1024 };
-    let code = 4096;
+fn transact<Q: CreditCharge>(card: Q) {
+    let id = 4096;
 
-    if card.charge_with_id(code) {
+    if card.charge_with_id(id) {
         println!("Success!")
     } else {
-        println!("Failure");
+        panic!("Invalid code")
     }
+}
+
+fn main() {
+    let card = BitCredit { btc_number: 1024 };
+
+    transact(card);
 }
